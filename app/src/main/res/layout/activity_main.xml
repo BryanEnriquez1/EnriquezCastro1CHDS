@@ -22,13 +22,13 @@
         app:layout_constraintVertical_bias="0.052" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btrecibir"
         android:layout_width="273dp"
         android:layout_height="77dp"
         android:layout_marginTop="52dp"
         android:text="RECIBIR BIOGRAFÍA"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,11 +36,11 @@
         app:layout_constraintVertical_bias="0.401" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvtexto"
         android:layout_width="333dp"
         android:layout_height="224dp"
         android:layout_marginBottom="100dp"
-        android:text="TextView"
+        android:text="Sin Datos"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
