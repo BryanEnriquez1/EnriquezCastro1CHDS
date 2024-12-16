@@ -3,6 +3,7 @@ package com.baec.enriquezcastro1chds;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +22,9 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnrecibir;
+    Button btnsuma, btndatos, btnlista, btnbiograf, btnsumweb;
     TextView txtbiografia;
+    EditText edtnumero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,31 +36,76 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        btnrecibir = findViewById(R.id.btrecibir);
+        btnsuma = findViewById(R.id.btsuma);
+        btndatos = findViewById(R.id.btdatos);
+        btnlista = findViewById(R.id.btlista);
+        btnbiograf = findViewById(R.id.btbiograf);
+        btnsumweb = findViewById(R.id.btsumweb);
         txtbiografia = findViewById(R.id.tvtexto);
+        edtnumero = findViewById(R.id.etnumero);
 
-        btnrecibir.setOnClickListener(new View.OnClickListener() {
+        btnbiograf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                obtenerServicioWeb("http://10.10.35.212:3000/enriquez");
+                obtenerServicioWeb("http://10.10.26.33:3000/Alexander");
             }
         });
+
+        btnlista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtenerServicioWeb("http://10.10.26.33:3000/nombre");
+            }
+        });
+
+        btnsumweb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtenerServicioWebSuma("http://10.10.26.33:3000/suma");
+            }
+        });
+
+        btnsuma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String num = edtnumero.getText().toString();
+
+                // Validar que el usuario haya ingresado un número antes de llamar al servicio
+                if (!num.isEmpty()) {
+                    obtenerServicioWebSuma("http://10.10.26.33:3000/sumacli/" + num);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Por favor ingresa un número", Toast.LENGTH_SHORT).show();
+                };
+            }
+        });
+    }
+    private void obtenerServicioWebSuma(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                txtbiografia.setText("Resultado: "+ response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error en la solicitud: " + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
     private void obtenerServicioWeb(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 txtbiografia.setText(response);
-                Toast.makeText(getApplicationContext(), "Éxito", Toast.LENGTH_SHORT).show();
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error en la solicitud: " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error en la solicitud: " + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
