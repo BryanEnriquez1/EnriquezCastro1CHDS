@@ -97,7 +97,7 @@ public class FigurasGeometricas extends AppCompatActivity {
                 String valbase = etxbase.getText().toString();
                 String valaltura = etxaltura.getText().toString();
                 if (!valbase.isEmpty() && !valaltura.isEmpty()) {
-                    ServicioWebFiguras("http://192.168.1.5:3000/trianguloRectangulo/" + valbase + "/" + valaltura);
+                    ServicioWebFiguras("http://10.10.26.33:3000/trianguloRectangulo/" + valbase + "/" + valaltura);
                     ivfiguras.setImageDrawable(trianguloRectF);
                     dialog.dismiss();
                 } else {
@@ -124,7 +124,7 @@ public class FigurasGeometricas extends AppCompatActivity {
                 String valdmenor = etxdmenor.getText().toString();
                 String vallado = etxlado.getText().toString();
                 if (!valdmayor.isEmpty() && !valdmenor.isEmpty() && !vallado.isEmpty()) {
-                    ServicioWebFiguras("http://192.168.1.5:3000/rombo/" + valdmayor + "/" + valdmenor +"/"+ vallado);
+                    ServicioWebFiguras("http://10.10.26.33:3000/rombo/" + valdmayor + "/" + valdmenor +"/"+ vallado);
                     ivfiguras.setImageDrawable(romboF);
                     dialog.dismiss();
                 } else {
@@ -151,7 +151,7 @@ public class FigurasGeometricas extends AppCompatActivity {
                 String valalturap = etxalturap.getText().toString();
                 String valladop = etxladop.getText().toString();
                 if (!valbasep.isEmpty() && !valalturap.isEmpty() && !valladop.isEmpty()) {
-                    ServicioWebFiguras("http://192.168.1.5:3000/paralelogramo/" + valbasep + "/" + valalturap +"/"+ valladop);
+                    ServicioWebFiguras("http://10.10.26.33:3000/paralelogramo/" + valbasep + "/" + valalturap +"/"+ valladop);
                     ivfiguras.setImageDrawable(paralelogramF);
                     dialog.dismiss();
                 } else {
