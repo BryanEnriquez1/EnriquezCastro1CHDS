@@ -15,9 +15,10 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tvtexto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.908" />
+        app:layout_constraintVertical_bias="0.159" />
 
     <Button
         android:id="@+id/btbiograf"
@@ -33,17 +34,16 @@
         app:layout_constraintVertical_bias="0.538" />
 
     <Button
-        android:id="@+id/btdatos"
+        android:id="@+id/btfiguras"
         android:layout_width="177dp"
         android:layout_height="70dp"
-        android:text="DATOS"
+        android:text="FIGURAS"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tvtexto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.159" />
+        app:layout_constraintVertical_bias="0.899" />
 
     <Button
         android:id="@+id/btsuma"
