@@ -8,42 +8,17 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btsumweb"
+        android:id="@+id/bttrinomio"
         android:layout_width="177dp"
         android:layout_height="70dp"
-        android:text=" SUM WEB"
+        android:text="TRINOMIO"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tvtexto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.159" />
-
-    <Button
-        android:id="@+id/btbiograf"
-        android:layout_width="177dp"
-        android:layout_height="70dp"
-        android:text="BIOGRAFIA"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.538" />
-
-    <Button
-        android:id="@+id/btfiguras"
-        android:layout_width="177dp"
-        android:layout_height="70dp"
-        android:text="FIGURAS"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.899" />
+        app:layout_constraintVertical_bias="0.837" />
 
     <Button
         android:id="@+id/btsuma"
@@ -56,7 +31,20 @@
         app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.159" />
+        app:layout_constraintVertical_bias="0.123" />
+
+    <Button
+        android:id="@+id/btbiograf"
+        android:layout_width="177dp"
+        android:layout_height="70dp"
+        android:text="BIOGRAFÍA"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etnumero"
+        app:layout_constraintVertical_bias="0.474" />
 
     <Button
         android:id="@+id/btlista"
@@ -66,10 +54,36 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tvtexto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etnumero"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.474" />
+
+    <Button
+        android:id="@+id/btsumweb"
+        android:layout_width="177dp"
+        android:layout_height="70dp"
+        android:text=" SUM WEB"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etnumero"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <Button
+        android:id="@+id/btfiguras"
+        android:layout_width="177dp"
+        android:layout_height="70dp"
+        android:text="FIGURAS"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvtexto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etnumero"
+        app:layout_constraintVertical_bias="0.837" />
 
     <TextView
         android:id="@+id/textView"
@@ -84,13 +98,13 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/tvtexto"
-        android:layout_width="354dp"
-        android:layout_height="230dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="377dp"
+        android:layout_height="213dp"
+        android:layout_marginBottom="40dp"
         android:text="Sin Datos"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -102,9 +116,9 @@
         android:id="@+id/etnumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Numero"
+        android:hint="Número"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

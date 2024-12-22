@@ -1,5 +1,6 @@
 package com.baec.enriquezcastro1chds;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,9 +22,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
-    Button btnsuma, btnfiguras, btnlista, btnbiograf, btnsumweb;
+    Button btnsuma, btnfiguras, btnlista, btnbiograf, btnsumweb, btntrinomio;
     TextView txtbiografia;
     EditText edtnumero;
 
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnlista = findViewById(R.id.btlista);
         btnbiograf = findViewById(R.id.btbiograf);
         btnsumweb = findViewById(R.id.btsumweb);
+        btntrinomio = findViewById(R.id.bttrinomio);
         txtbiografia = findViewById(R.id.tvtexto);
         edtnumero = findViewById(R.id.etnumero);
 
@@ -86,6 +91,36 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i1);
             }
         });
+        btntrinomio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogTrinomio();
+            }
+        });
+    }
+    private void dialogTrinomio() {
+
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.trinomio_input);
+
+        EditText etxvalA = dialog.findViewById(R.id.etvalA);
+        EditText etxvalB = dialog.findViewById(R.id.etvalB);
+        Button btncalculatrinomio = dialog.findViewById(R.id.btcalculatrinomio);
+
+        btncalculatrinomio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String valA = etxvalA.getText().toString();
+                String valB = etxvalB.getText().toString();
+                if (!valA.isEmpty() && !valB.isEmpty()) {
+                    ServicioWebTrinomio("http://192.168.1.12:3000/trinomioCuadradoPerfecto/" + valA + "/" + valB);
+                    dialog.dismiss();
+                } else {
+                    Toast.makeText(MainActivity.this, "Por favor, ingrese un valor", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialog.show();
     }
     private void obtenerServicioWebSuma(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -107,6 +142,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 txtbiografia.setText(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error en la solicitud: " + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+    private void ServicioWebTrinomio(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    // Parsear la respuesta JSON
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    // Obtener los valores de área y perímetro
+                    String fb1 = jsonObject.getString("fbase1");
+                    String fb21 = jsonObject.getString("fbase21");
+                    String fb31 = jsonObject.getString("fbase31");
+                    String r1 = jsonObject.getString("total1");
+                    String fb2 = jsonObject.getString("fbase2");
+                    String fb22 = jsonObject.getString("fbase22");
+                    String fb32 = jsonObject.getString("fbase32");
+                    String r2 = jsonObject.getString("total2");
+
+                    txtbiografia.setText("Forma 1\n"+fb21+" = "+fb1+"\n"+fb31+"\n"+r1+"\n"+"Forma 2\n"+fb22+" = "+fb2+"\n"+fb32+"\n"+r2);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
