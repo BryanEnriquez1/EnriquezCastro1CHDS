@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText etxvalA = dialog.findViewById(R.id.etvalA);
         EditText etxvalB = dialog.findViewById(R.id.etvalB);
+        EditText etxvalC = dialog.findViewById(R.id.etvalC);
         Button btncalculatrinomio = dialog.findViewById(R.id.btcalculatrinomio);
 
         btncalculatrinomio.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +113,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String valA = etxvalA.getText().toString();
                 String valB = etxvalB.getText().toString();
-                if (!valA.isEmpty() && !valB.isEmpty()) {
-                    ServicioWebTrinomio("http://192.168.1.12:3000/trinomioCuadradoPerfecto/" + valA + "/" + valB);
+                String valC = etxvalC.getText().toString();
+                if (!valA.isEmpty() && !valB.isEmpty() && !valC.isEmpty()) {
+                    ServicioWebTrinomio("http://192.168.1.12:3000/trinomioCuadradoPerfecto/" + valA + "/" + valB + "/" + valC);
+
+                    
                     dialog.dismiss();
                 } else {
                     Toast.makeText(MainActivity.this, "Por favor, ingrese un valor", Toast.LENGTH_SHORT).show();
@@ -161,16 +165,10 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
 
                     // Obtener los valores de área y perímetro
-                    String fb1 = jsonObject.getString("fbase1");
-                    String fb21 = jsonObject.getString("fbase21");
-                    String fb31 = jsonObject.getString("fbase31");
-                    String r1 = jsonObject.getString("total1");
-                    String fb2 = jsonObject.getString("fbase2");
-                    String fb22 = jsonObject.getString("fbase22");
-                    String fb32 = jsonObject.getString("fbase32");
-                    String r2 = jsonObject.getString("total2");
+                    String tri = jsonObject.getString("trinomio");
+                    String fac = jsonObject.getString("factorizacion");
 
-                    txtbiografia.setText("Forma 1\n"+fb21+" = "+fb1+"\n"+fb31+"\n"+r1+"\n"+"Forma 2\n"+fb22+" = "+fb2+"\n"+fb32+"\n"+r2);
+                    txtbiografia.setText(tri+" = "+fac);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

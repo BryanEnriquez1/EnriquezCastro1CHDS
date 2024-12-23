@@ -37,6 +37,22 @@
         android:digits="0123456789."
         android:hint="Ingrese un valor" />
 
+    <TextView
+        android:text="Ingrese el valor c:"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp" />
+
+    <EditText
+        android:id="@+id/etvalC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:digits="0123456789."
+        android:hint="Ingrese un valor" />
+
     <Button
         android:id="@+id/btcalculatrinomio"
         android:layout_width="match_parent"
